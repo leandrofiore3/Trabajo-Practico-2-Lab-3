@@ -27,6 +27,9 @@ app.component('publicacion', {
     </div>
     <div class="col-md-1"></div>
   `,
+
+  props: ['usuario'],
+
   data() {
     return {
       image: "/Images/paisaje.jpeg",
@@ -53,17 +56,16 @@ app.component('publicacion', {
     },
 
     agregarComentario() {
-      if (this.nuevoComentario.trim() !== '' && document.getElementById("nombre-usuario").value !== '') {
+      if (this.nuevoComentario.trim() !== '' && this.usuario !== '') {
         const comentarioNuevo = {
           id: Date.now(),
-          nombre: document.getElementById("nombre-usuario").value,
+          nombre: this.usuario,
           texto: this.nuevoComentario,
           esFijo: false
         };
 
         this.comentarios.push(comentarioNuevo);
         this.nuevoComentario = '';
-        document.getElementById("nombre-usuario").value = '';
         this.error = ''; 
       } else {
         this.error = 'Por favor, ingrese un usuario y un comentario.'; 
@@ -71,7 +73,6 @@ app.component('publicacion', {
     },
 
     eliminarComentario(id) {
-      // Verificar si el comentario es fijo antes de eliminarlo
       const comentario = this.comentarios.find(c => c.id === id);
       if (!comentario.esFijo) {
         this.comentarios = this.comentarios.filter(c => c.id !== id);

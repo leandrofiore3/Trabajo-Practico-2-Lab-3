@@ -13,10 +13,10 @@
 </head>
 <body>
     <div id = "app">
-      <nav-bar></nav-bar>
+      <nav-bar @nombre-usuario-actualizado="actualizarNombreUsuario"></nav-bar>
       <perfil></perfil>
       <div class="row">
-      <publicacion></publicacion>
+      <publicacion :usuario="nombreUsuario"></publicacion>
       <sobre-mi></sobre-mi>
       </div>
 
