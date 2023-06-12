@@ -1,8 +1,7 @@
 {
-  "homepage": "https://leandrofiore3.github.io/Trabajo-Practico-2-Lab-3/",
-"scripts": {
-  "deploy": "gh-pages -d dist"
-}
-
+  "dependencies": {
+    "gh-pages": "^5.0.0"
+    
+  }
   
 }
